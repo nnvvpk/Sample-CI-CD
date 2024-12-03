@@ -22,25 +22,8 @@ jobs:
     - name: Install Dependencies
       run: npm ci
 
-    - name: Set Environment Variables
-      env:
-        DB_HOST: ${{ secrets.DB_HOST }}
-        DB_USER: ${{ secrets.DB_USER }}
-        DB_PASS: ${{ secrets.DB_PASS }}
-        PORT: ${{ secrets.PORT }}
-        ABC: ${{ secrets.ABC }}
-      run: |
-        echo "Environment variables set!"
-        echo "DB host is $DB_HOST"
-        echo "DB_USER is $DB_USER"
-        echo "DB_PASS is $DB_PASS"
-        echo "PORT is $PORT"
-        export HELLO="world"
-        export PORT=${{ secrets.PORT }}
-        echo "ABC is $ABC"
     - name: Run node js script
       env:
-        DB_HOST: ${{ secrets.DB_HOST }}
         PORT: ${{ secrets.PORT }}
       run: |
         echo "RUnning node js application now"
