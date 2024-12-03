@@ -29,4 +29,7 @@ jobs:
         PORT: ${{ secrets.PORT }}
       run: |
         echo "Environemnt variable is" $PORT
-      
+    - name: Debug Environment Variables
+      run: echo "PORT=$PORT"
+      env:
+        PORT: ${{ secrets.PORT }}
