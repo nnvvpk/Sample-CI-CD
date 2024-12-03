@@ -4,8 +4,7 @@ on:
   push:
     branches: [ "main" ]
   workflow_dispatch:
-env:
-  PORT: ${{ secrets.PORT }}
+
 jobs:
   build:
     runs-on: self-hosted
@@ -25,5 +24,9 @@ jobs:
     - name: Build
       run: |
         npm ci
-        echo $PORT
+    - name: Set Env Variables
+      env:
+        PORT: ${{ secrets.PORT }}
+      run: |
+        echo "Environemnt variable is" $PORT
       
