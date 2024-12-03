@@ -39,6 +39,3 @@ jobs:
         export PORT=${{ secrets.PORT }}
         echo "ABC is $ABC"
 
-    - name: RUn the app
-      run: |
-        node index.js
