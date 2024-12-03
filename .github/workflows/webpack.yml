@@ -1,33 +1,33 @@
-name: NodeJS sample dev
+name: Deploy Application
 
 on:
   push:
-    branches: [ "main" ]
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
-  build:
-    runs-on: self-hosted
-
-    strategy:
-      matrix:
-        node-version: [18.x]
+  deploy:
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout Code
+      uses: actions/checkout@v3
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+    - name: Set Up Node.js
+      uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '18'
 
-    # - name: Build
-    #   run: |
-    #     npm ci
-    - name: Debug Environment Variables
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Set Environment Variables
       env:
-        PORT: ${{ secrets.PORT }}
-        ABC: ${{ secrets.ABC }}
+        DB_HOST: ${{ secrets.DB_HOST }}
+        DB_USER: ${{ secrets.DB_USER }}
+        DB_PASS: ${{ secrets.DB_PASS }}
       run: |
-        echo "Port is set to $PORT"
-        echo "ABC is set to $ABC"
+        echo "Environment variables set!"
+        echo "DB host is $DB_HOST"
+        echo "DB_USER is $DB_USER"
+        echo "DB_PASS is $DB_PASS"
