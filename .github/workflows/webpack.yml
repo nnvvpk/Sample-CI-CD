@@ -33,7 +33,7 @@ jobs:
       env:
         PORT: ${{ secrets.PORT }}
       run: |
-        if ( -z "$PORT" ); then
+        if: -z "$PORT" ; then
           echo "PORT is not set!"
           exit 1
         else
