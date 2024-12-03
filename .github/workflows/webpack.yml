@@ -35,6 +35,8 @@ jobs:
         echo "DB_USER is $DB_USER"
         echo "DB_PASS is $DB_PASS"
         echo "PORT is $PORT"
+        export HELLO="world"
+        export PORT=${{ secrets.PORT }}
         echo "ABC is $ABC"
 
     - name: RUn the app
