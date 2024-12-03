@@ -21,21 +21,13 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Build
-      run: |
-        npm ci
-    - name: Set Env Variables
-      env:
-        PORT: ${{ secrets.PORT }}
-      run: |
-        echo "Environemnt variable is" $PORT
+    # - name: Build
+    #   run: |
+    #     npm ci
     - name: Debug Environment Variables
       env:
         PORT: ${{ secrets.PORT }}
+        ABC: ${{ secrets.ABC }}
       run: |
-        if: -z "$PORT" ; then
-          echo "PORT is not set!"
-          exit 1
-        else
-          echo "PORT is set to $PORT"
-        fi
+        echo "Port is set to $PORT"
+        echo "ABC is set to $ABC"
