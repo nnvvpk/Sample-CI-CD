@@ -30,6 +30,12 @@ jobs:
       run: |
         echo "Environemnt variable is" $PORT
     - name: Debug Environment Variables
-      run: echo "PORT=$PORT"
       env:
-        PORT: ${{ secrets.PORT }}
+        DB_HOST: ${{ secrets.PORT }}
+      run: |
+        if [ -z "$PORT" ]; then
+          echo "PORT is not set!"
+          exit 1
+        else
+          echo "PORT is set to $PORT"
+        fi
