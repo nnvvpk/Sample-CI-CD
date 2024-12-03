@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout Code
@@ -36,3 +36,7 @@ jobs:
         echo "DB_PASS is $DB_PASS"
         echo "PORT is $PORT"
         echo "ABC is $ABC"
+
+    - name: RUn the app
+      run: |
+        node index.js
